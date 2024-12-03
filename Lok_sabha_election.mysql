@@ -1,0 +1,151 @@
+CREATE DATABASE Lok_sabha_election;
+USE Lok_sabha_election;
+
+
+CREATE TABLE voter_details (
+  ID INT,
+  State VARCHAR(100),
+  Constituency VARCHAR(100),
+  Candidate VARCHAR(100),
+  Party VARCHAR(100),
+  EVM_Votes INT,
+  Postal_Votes INT,
+  Total_Votes INT,
+  Percentage_of_Votes DECIMAL(5,2),
+  Result VARCHAR(10)
+);
+
+
+mysql> desc voter_details;
++---------------------+--------------+------+-----+---------+-------+
+| Field               | Type         | Null | Key | Default | Extra |
++---------------------+--------------+------+-----+---------+-------+
+| ID                  | int          | NO   | PRI | NULL    |       |
+| State               | varchar(100) | NO   |     | NULL    |       |
+| Constituency        | varchar(100) | NO   |     | NULL    |       |
+| Candidate           | varchar(100) | NO   |     | NULL    |       |
+| Party               | varchar(100) | NO   |     | NULL    |       |
+| EVM_Votes           | int          | NO   |     | NULL    |       |
+| Postal_Votes        | int          | NO   |     | NULL    |       |
+| Total_Votes         | int          | NO   |     | NULL    |       |
+| Percentage_Of_Votes | decimal(5,2) | NO   |     | NULL    |       |
+| Result              | varchar(100) | NO   |     | NULL    |       |
++---------------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql> insert into voter_details (id, state, constituency, candidate, party, EVM_Votes, postal_votes, total_votes, percentage_of_votes, result) VALUES
+    -> (1,'Uttar Pradesh','Varanasi','NARENDRA MODI','Bharatiya Janata Party',611439
+,1531,612970,54.24,'Won');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from voter_details;
++----+---------------+--------------+---------------+------------------------+-----------+--------------+-------------+---------------------+--------+
+| ID | State         | Constituency | Candidate     | Party                  | EVM_Votes | Postal_Votes | Total_Votes | Percentage_Of_Votes | Result |
++----+---------------+--------------+---------------+------------------------+-----------+--------------+-------------+---------------------+--------+
+|  1 | Uttar Pradesh | Varanasi     | NARENDRA MODI | Bharatiya Janata Party |    611439 |         1531 |      612970 |               54.24 | Won    |
++----+---------------+--------------+---------------+------------------------+-----------+--------------+-------------+---------------------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into voter_details (id, state, constituency, candidate, party, EVM_Votes, postal_votes, total_votes, percentage_of_votes, result) VALUES
+    -> (2,'Uttar Pradesh','Varanasi','AJAY RAI','Indian National Congress',459084,1373,460457,40.74,'Lost'),
+    -> (3,'Uttar Pradesh','Rae Bareli','RAHUL GANDHI','Indian National Congress',686044,1605,687649,66.17,'Won'),
+    -> (4,'Uttar Pradesh','Kannauj','AKHILESH YADAV','Samajwadi Party',640207,2085,6,2112,612709,53.89,'Won'),
+    -> (5,'Uttar Pradesh','Kannauj','AKHILESH YADAV','Samajwadi Party',640207,2085,642292,52.74,'Won'),
+    -> (6,'Uttar Pradesh','Rae Bareli','DINESH PRATAP SINGH','Bharatiya Janata Party',296703,916,297619,28.64,'Lost'),
+    -> (7,'Uttar Pradesh','Lucknow','RAVIDAS MEHROTRA','Samajwadi Party',476303,1247,477550,42,'Lost'),
+    -> (8,'Uttar Pradesh','Kannauj','SUBRAT PATHAK','Bharatiya Janata Party',470131,1239,471370,38.71,'Lost'),
+    -> (9,'Uttar Pradesh','Gorakhpur','RAVINDRA SHUKLA ALIAS RAVI KISHAN','Bharatiya Janata Party',584512,1322,585834,50.75,'Won'),
+    -> (10,'Uttar Pradesh','Gorakhpur','KAJAL NISHAD','Samajwadi Party',480788,1520,482308,41.78,'Lost'),
+    ->(11,'West Bengal','Asansol','SHATRUGHAN PRASAD SINHA','All India Trinamool Congress',603105,2540,605645,46.53,'Won'),
+    -> (12,'West Bengal','Asansol','SURENDRAJEET SINGH AHLUWALIA','Bharatiya Janata Party',544077,2004,546081,41.96,'Lost'),
+    -> (13,'West Bengal','Darjeeling','RAJU BISTA','Bharatiya Janata Party',675324,4007,679331,51.18,'Won'),
+    -> (14,'West Bengal','Darjeeling','GOPAL LAMA','All India Trinamool Congress',498789,2017,500806,37.73,'Lost'),
+    -> (15,'West Bengal','Diamond harbour','ABHISHEK BANERJEE','All India Trinamool Congress',1043493,4737,1048230,68.48,'Won'),
+    -> (16,'West Bengal','Diamond harbour','ABHIJIT DAS','Bharatiya Janata Party',336068,1232,337300,22.03,'Lost'),
+    -> (17,'West Bengal','Hooghly','RACHNA BANERJEE','All India Trinamool Congress',700120,2624,702744,46.31,'Won'),
+    -> (18,'West Bengal','Hooghly','LOCKET CHATTERJEE','Bharatiya Janata Party',623867,2024,625891,41.24,'Lost'),
+    -> (19,'West Bengal','Howrah','PRASUN BANERJEE','All India Trinamool Congress',625229,1264,626493,49.26,'Won'),
+    -> (20,'West Bengal','Howrah','DR RATHIN CHAKRAVARTY','Bharatiya Janata Party',455996,1055,457051,35.94,'Lost'),
+    -> (21,'Maharashtra','Thane','NARESH GANPAT MHASKE','Shiv Sena',732109,2122,734231,56.09,'Won'),
+    -> (22,'Maharashtra','Thane','RAJAN BABURAO VICHARE','Shiv Sena (UBT)',515013,2207,517220,39.51,'Lost'),
+    -> (23,'Maharashtra','Nagpur','NITIN JAIRAM GADKARI','Bharatiya Janata Party',652809,2218,655027,54.08,'Won'),
+    -> (24,'Maharashtra','Nagpur','VIKAS THAKRE','Indian National Congress',515941,1483,517424,42.72,'Lost'),
+    -> (25,'Maharashtra','Mumbai North','PIYUSH GOYAL','Bharatiya Janata Party',678451,1695,680146,65.68,'Won'),
+    -> (26,'Maharashtra','Mumbai North','BHUSHAN PATIL','Indian National Congress',321455,1083,322538,31.15,'Lost'),
+    -> (27,'Maharashtra','Kolhapur','CHHATRAPATI SHAHU SHAHAJI','Indian National Congress',750323,4199,754522,54.15,'Won'),
+    -> (28,'Maharashtra','Kolhapur','SANJAY SADASHIVRAO MANDLIK','Shiv Sena',597014,2544,599558,43.03,'Lost'),
+    -> (29,'Maharashtra','Kalyan','DR SHRIKANT EKNATH SHINDE','Shiv Sena',587921,1715,589636,56.38,'Won'),
+    -> (30,'Maharashtra','Kalyan','VAISHALI DAREKAR - RANE','Shiv Sena (UBT)',379236,1256,380492,36.39,'Lost'),
+    -> (31,'Tamil Nadu','VIRUDHUNAGAR','MANICKAM TAGORE ','Indian National Congress',382876,2380,385256,36.28,'Won'),
+    -> (32,'Tamil Nadu','VIRUDHUNAGAR','RADIKAA R','Bharatiya Janata Party',164149,2122,166271,15.66,'Lost'),
+    -> (33,'Tamil Nadu','ARAKKONAM','S JAGATHRATCHAKAN','Dravida Munnetra Kazhagam',560578,2638,563216,48.39,'Won'),
+    -> (34,'Tamil Nadu','ARAKKONAM','L VIJAYAN','All India Anna Dravida Munnetra Kazhagam',255343,1314,256657,22.05,'Lost'),
+    -> (35,'Tamil Nadu','ARANI','THARANIVENTHAN M S','Dravida Munnetra Kazhagam',497083,3016,500099,43.86,'Won'),
+    -> (36,'Tamil Nadu','ARANI','GAJENDRAN ','All India Anna Dravida Munnetra Kazhagam',289650,1683,291333,25.55,'Lost'),
+    -> (37,'Tamil Nadu','CHENNAI CENTRAL','DAYANIDHI MARAN','Dravida Munnetra Kazhagam',412286,1562,413848,56.65,'Won'),
+    -> (38,'Tamil Nadu','CHENNAI CENTRAL','VINOJ','Bharatiya Janata Party',168059,1100,169159,23.16,'Lost'),
+    -> (39,'Tamil Nadu','CHENNAI NORTH','DR.KALANIDHI VEERASWAMY','Dravida Munnetra Kazhagam',495733,1600,497333,55.11,'Won'),
+    -> (40,'Tamil Nadu','CHENNAI NORTH','R. MANOHAR','All India Anna Dravida Munnetra Kazhagam',157631,480,158111,17.52,'Lost'),
+ -> (41,'Bihar','Hajipur','CHIRAG PASWAN','Lok Janshakti Party(Ram Vilas)',613106,2612,615718,53.29,'Won'),
+    -> (42,'Bihar','Hajipur','SHIV CHANDRA RAM','Rashtriya Janata Dal',442553,3060,445613,38.57,'Lost'),
+    -> (43,'Bihar','Begusarai','GIRIRAJ SINGH','Bharatiya Janata Party',646912,2419,649331,50.15,'Won'),
+    -> (44,'Bihar','Begusarai','ABDHESH KUMAR ROY','Communist Party of India',564310,3541,567851,43.86,'Lost'),
+    -> (45,'Bihar','Arrah','SUDAMA PRASAD','Communist Party of India',526564,2818,529382,48.28,'Won'),
+    -> (46,'Bihar','Arrah','R. K. SINGH','Bharatiya Janata Party',464736,4838,469574,42.82,'Lost'),
+    -> (47,'Bihar','Araria','PRADEEP KUMAR SINGH','Bharatiya Janata Party',599118,1028,600146,47.91,'Won'),
+    -> (48,'Bihar','Araria','SHAHNAWAZ','Rashtriya Janata Dal',578904,1148,580052,46.31,'Lost'),
+    -> (49,'Bihar','Aurangabad','ABHAY KUMAR SINHA','Rashtriya Janata Dal',463845,1722,465567,49.22,'Won'),
+    -> (50,'Bihar','Aurangabad','SUSHIL KUMAR SINGH','Bharatiya Janata Party',384819,1637,386456,40.86,'Lost'),
+   -> (51,'Karnataka','Bagalkot','GADDIGOUDAR. PARVATAGOUDA. CHANDANAGOUDA.','Bharatiya Janata Party',667441,3598,671039,50.93,'Won'),
+    -> (52,'Karnataka','Bagalkot','SAMYUKTA SHIVANAND PATIL','Indian National Congress',600741,1899,602640,45.74,'Lost'),
+    -> (53,'Karnataka','Bangalore central','P C MOHAN','Bharatiya Janata Party',657236,1679,658915,50.05,'Won'),
+    -> (54,'Karnataka','Bangalore central','MANSOOR ALI KHAN','Indian National Congress',625368,840,626208,47.57,'Lost'),
+    -> (55,'Karnataka','Bangalore North','SHOBHA KARANDLAJE','Bharatiya Janata Party',982805,3244,986049,56.27,'Won'),
+    -> (56,'Karnataka','Bangalore North','PROFESSOR M.V RAJEEV GOWDA','Indian National Congress',725190,1383,726573,41.46,'Lost'),
+    -> (57,'Karnataka','Bangalore South','TEJASVI SURYA','Bharatiya Janata Party',747780,3050,750830,60.1,'Won'),
+    -> (58,'Karnataka','Bangalore South','SOWMYA REDDY','Indian National Congress',472754,993,473747,37.92,'Lost'),
+    -> (59,'Karnataka','Mysore','YADUVEER KRISHNADATTA CHAMARAJA WADIYAR','Bharatiya Janata Party',790391,5112,795503,53.59,'Won'),
+    -> (60,'Karnataka','Mysore','M. LAKSHMANA','Indian National Congress',653739,2502,656241,44.21,'Lost'),
+  -> (61,'Madhya Pradesh','GWALIOR','BHARAT SINGH KUSHWAH','Bharatiya Janata Party',668782,2753,671535,49.99,'Won'),
+    -> (62,'Madhya Pradesh','GWALIOR','PRAVEEN PATHAK','Indian National Congress',599077,2248,601325,44.77,'Lost'),
+    -> (63,'Madhya Pradesh','INDORE','SHANKAR LALWANI','Bharatiya Janata Party',1223746,3005,1226751,78.54,'Won'),
+    -> (64,'Madhya Pradesh','INDORE','SANJAY LAKSHMAN SOLANKI','Bahujan Samaj Party',51486,173,51659,3.31,'Lost'),
+    -> (65,'Madhya Pradesh','JABALPUR','ASHISH DUBEY','Bharatiya Janata Party',788721,1412,790133,68.2,'Won'),
+    -> (66,'Madhya Pradesh','JABALPUR','DINESH YADAV','Indian National Congress',302892,567,303459,26.19,'Lost'),
+    -> (67,'Madhya Pradesh','BHOPAL','ALOK SHARMA','Bharatiya Janata Party',978285,2824,981109,65.48,'Won'),
+    -> (68,'Madhya Pradesh','BHOPAL','ADVOCATE ARUN SHRIVASTAVA','Indian National Congress',478698,912,479610,32.01,'Lost'),
+    -> (69,'Madhya Pradesh','GUNA','JYOTIRADITYA M. SCINDIA','Bharatiya Janata Party',919744,3558,923302,67.21,'Won'),
+    -> (70,'Madhya Pradesh','GUNA','YADVENDRA RAO DESHRAJ SINGH','Indian National Congress',380909,1464,382373,27.83,'Lost'),
+  -> (71,'Andhra Pradesh','Thirupathi','GURUMOORTHY MADDILA','Yuvajana Sramika Rythu Congress Party',626702,5526,632228,45.73,'Won'),
+    -> (72,'Andhra Pradesh','Thirupathi','VARA PRASAD RAO VELAGAPALLI','Bharatiya Janata Party',608494,9165,617659,44.67,'Lost'),
+    -> (73,'Andhra Pradesh','Vijayawada','KESINENI SIVANATH','Telugu Desam',784722,9432,794154,58.21,'Won'),
+    -> (74,'Andhra Pradesh','Vijayawada','KESINENI SRINIVAS','Yuvajana Sramika Rythu Congress Party',505637,6432,512069,37.53,'Lost'),
+    -> (75,'Andhra Pradesh','Visakhapatnam','SRIBHARAT MATHUKUMILI','Telugu Desam',893884,13583,907467,65.42,'Won'),
+    -> (76,'Andhra Pradesh','Visakhapatnam','JHANSI LAKSHMI. BOTCHA.','Yuvajana Sramika Rythu Congress Party',397821,5399,403220,29.07,'Lost'),
+    -> (77,'Andhra Pradesh','Amalapuram','G M HARISH','Telugu Desam',786149,10832,796981,61.25,'Won'),
+    -> (78,'Andhra Pradesh','Amalapuram','RAPAKA VARAPRASADA RAO','Yuvajana Sramika Rythu Congress Party',450362,4423,454785,34.95,'Lost'),
+    -> (79,'Andhra Pradesh','Anakapalle','C.M.RAMESH','Bharatiya Janata Party',750027,12042,762069,57.5,'Won'),
+    -> (80,'Andhra Pradesh','Anakapalle','BUDI MUTYALA NAIDU','Yuvajana Sramika Rythu Congress Party',459762,5777,465539,35.13,'Lost'),
+    -> (81,'Rajasthan','UDAIPUR','MANNA LAL RAWAT','Bharatiya Janata Party',732757,5529,738286,49.27,'Won'),
+    -> (82,'Rajasthan','UDAIPUR','TARACHAND MEENA','Indian National Congress',473167,3511,476678,31.81,'Lost'),
+    -> (83,'Rajasthan','KOTA','OM BIRLA','Bharatiya Janata Party',744396,6100,750496,50.03,'Won'),
+    -> (84,'Rajasthan','KOTA','PRAHLAD GUNJAL','Indian National Congress',702623,5899,708522,47.23,'Lost'),
+    -> (85,'Rajasthan','JODHPUR','GAJENDRA SINGH SHEKHAWAT','Bharatiya Janata Party',722978,7078,730056,52.76,'Won'),
+    -> (86,'Rajasthan','JODHPUR','KARAN SINGH UCHIYARDA','Indian National Congress',608228,6151,614379,44.4,'Lost'),
+    -> (87,'Rajasthan','JAIPUR','MANJU SHARMA','Bharatiya Janata Party',878643,8207,886850,60.61,'Won'),
+    -> (88,'Rajasthan','JAIPUR','PRATAP SINGH KHACHARIYAWAS','Indian National Congress',549424,5659,555083,37.93,'Lost'),
+    -> (89,'Rajasthan','AJMER','BHAGIRATH CHOUDHARY','Bharatiya Janata Party',741151,6311,747462,62.23,'Won'),
+    -> (90,'Rajasthan','AJMER','RAMCHANDRA CHOUDHARY','Indian National Congress',413685,3786,417471,34.76,'Lost'),
+   -> (91,'Gujarat','Vadodara','DR. HEMANG JOSHI','Bharatiya Janata Party',865825,7364,873189,72.04,'Won'),
+    -> (92,'Gujarat','Vadodara','PADHIYAR  JASHPALSINH MAHENDRASINH','Indian National Congress',287570,3493,291063,24.01,'Lost'),
+    -> (93,'Gujarat','Valsad','DHAVAL LAXMANBHAI PATEL','Bharatiya Janata Party',760935,3291,764226,56.13,'Won'),
+    -> (94,'Gujarat','Valsad','ANANTKUMAR HASMUKHBHAI PATEL','Indian National Congress',547307,6215,553522,40.66,'Lost'),
+    -> (95,'Gujarat','Gandhinagar','AMIT SHAH','Bharatiya Janata Party',999984,10988,1010972,76.48,'Won'),
+    -> (96,'Gujarat','Gandhinagar','SONAL RAMANBHAI PATEL','Indian National Congress',261411,4845,266256,20.14,'Lost'),
+    -> (97,'Gujarat','Bharuch','MANSUKHBHAI DHANJIBHAI VASAVA','Bharatiya Janata Party',605489,2668,608157,50.72,'Won'),
+    -> (98,'Gujarat','Bharuch','CHAITARBHAI DAMJIBHAI VASAVA','Aam Aadmi Party',518419,4042,522461,43.58,'Lost'),
+    -> (99,'Gujarat','Chhota Udaipur','JASHUBHAI BHILUBHAI RATHVA','Bharatiya Janata Party',791727,4862,796589,62.84,'Won'),
+    -> (100,'Gujarat','Chhota Udaipur','SUKHRAMBHAI HARIYABHAI RATHWA','Indian National Congress',394433,3379,397812,31.38,'Lost');
+
+
+SELECT * FROM Voter_Details;
